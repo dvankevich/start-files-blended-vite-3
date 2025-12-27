@@ -1,12 +1,30 @@
 import Container from '../components/Container/Container';
 import Heading from '../components/Heading/Heading';
 import Section from '../components/Section/Section';
+import { useState, useEffect } from 'react';
+import { getCountries } from '../service/countryApi';
+import CountryList from '../components/CountryList/CountryList';
 
 const Home = () => {
+  const [countries, setCountries] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const data = await getCountries();
+        setCountries(data);
+        console.log('Fetched countries:', data);
+      } catch (error) {
+        console.error('Error fetching countries:', error);
+      }
+    };
+    getData();
+  }, []);
+
   return (
     <Section>
       <Container>
         <Heading title="Home" bottom />
+        <CountryList countries={countries} />
       </Container>
     </Section>
   );
