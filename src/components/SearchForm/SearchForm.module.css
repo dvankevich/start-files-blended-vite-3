@@ -18,7 +18,7 @@
 
   position: absolute;
   top: 0;
-  right: 10px;
+  right: 20px;
 }
 
 .select {
@@ -43,6 +43,7 @@
 
   cursor: pointer;
 }
+
 .select option:first-of-type {
   color: var(--color-light);
 }
